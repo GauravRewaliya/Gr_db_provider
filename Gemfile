@@ -58,3 +58,4 @@ end
 
 gem "dotenv-rails", "~> 3.1"
 gem "devise", "~> 4.9"
+gem "hashid-rails", "~> 1.4"
