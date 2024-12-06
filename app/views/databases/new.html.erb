@@ -1,0 +1,16 @@
+<h1>Add a New Database</h1>
+<%= form_with model: @database do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :db_type %>
+    <%= f.select :db_type, [['PostgreSQL', 'postgresql']], class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :url %>
+    <%= f.text_field :url, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Add Database', class: 'btn btn-primary' %>
+<% end %>

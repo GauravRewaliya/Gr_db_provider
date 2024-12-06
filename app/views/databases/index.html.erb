@@ -1,0 +1,10 @@
+<h1>Your Databases</h1>
+<%= link_to 'Add Database', new_database_path, class: 'btn btn-primary' %>
+<ul>
+  <% @databases.each do |db| %>
+    <li>
+      <strong><%= db.name %></strong> - <%= db.db_type %>
+      <%= link_to 'Manage', manage_database_path(db), class: 'btn btn-secondary' %>
+    </li>
+  <% end %>
+</ul>
