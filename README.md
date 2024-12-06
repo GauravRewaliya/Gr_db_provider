@@ -22,3 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+#### env file info
+.env.development
+.env.test
+.env.production
+.env
+
+.env.example
