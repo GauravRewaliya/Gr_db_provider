@@ -31,3 +31,7 @@ Things you may want to cover:
 .env
 
 .env.example
+
+
+## Docker
+>> docker compose up

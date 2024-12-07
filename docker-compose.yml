@@ -1,0 +1,83 @@
+version: '3.8'
+
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ./shared_db/postgres:/var/lib/postgresql/data
+      - ./setup-scripts/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - default
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
+    volumes:
+      - ./shared_db/mysql:/var/lib/mysql
+      - ./setup-scripts/mysql-init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - default
+  
+  # sqlite:
+  #   image: nouchka/sqlite3
+  #   container_name: sqlite_container
+  #   ports:
+  #     - "${SQLITE_PORT}:80"
+  #   volumes:
+  #     - ./shared_db/sqlite:/data
+
+  # oracle:
+  #   image: gvenzl/oracle-xe:latest
+  #   container_name: oracle_container
+  #   ports:
+  #     - "${ORACLE_PORT}:1521"
+  #   environment:
+  #     ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+  #   volumes:
+  #     - ./shared_db/oracle:/opt/oracle/oradata
+  #     - ./setup-scripts/oracle-init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   container_name: pgadmin_container
+  #   ports:
+  #     - "${PGADMIN_PORT}:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - default
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer_container
+    ports:
+      - "${ADMINER_PORT}:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+      - mysql
+      # - sqlite
+      # - oracle
+    # volumes:
+    #   - ./custom_app/adminer/html:/var/www/html
+    networks:
+      - default
