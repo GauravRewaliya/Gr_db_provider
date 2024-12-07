@@ -74,15 +74,20 @@ class Database < ApplicationRecord
     end
   end
   def ui_access_management_url
+    host ||= "http://localhost"
     case db_type
     when 'postgresql'
-      "https://#{host}:#{port}/pgadmin"
+      # port ||= 5432
+      "#{host}/pgadmin4"
     when 'mysql'
-      "https://#{host}:#{port}/phpmyadmin"
+      port ||= 3306
+      "#{host}:#{port}/phpmyadmin"
     when 'sqlite3'
-      "https://#{host}:#{port}/sqlite3"
+      port ||= 3000
+      "#{host}:#{port}/sqlite3"
     when 'oracle'
-      "https://#{host}:#{port}/oracle"
+      port ||= 1521
+      "#{host}:#{port}/oracle"
     else
       nil
     end

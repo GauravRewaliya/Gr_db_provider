@@ -4,9 +4,9 @@ class CreateDatabases < ActiveRecord::Migration[7.2]
       t.references :user, null: false, foreign_key: true
       t.string :name
       t.string :db_type
-      t.string :host
-      t.integer :port
-      t.string :username
+      t.string :host# no need
+      t.integer :port# no need
+      t.string :username# no need
       t.string :password
 
       t.timestamps
