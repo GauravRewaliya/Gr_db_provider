@@ -11,6 +11,9 @@ class CreateContainers < ActiveRecord::Migration[7.2]
       t.datetime :last_used
       t.string :storag_used
 
+      t.string :ram_limit
+      t.string :cpu_limit
+
       t.timestamps
     end
   end

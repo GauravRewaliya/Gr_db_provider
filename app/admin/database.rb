@@ -18,9 +18,9 @@ ActiveAdmin.register Database do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :db_type, as: :select, collection: ['PostgreSQL']
-      f.input :url
-      f.input :user, as: :select, collection: User.all
+      f.input :db_type, as: :select, collection: ['PostgreSQL','MySQL','MongoDB','Sqlite2','Sqlite3','Oracle']
+      # f.input :url
+      f.input :user_id, as: :select, collection: User.all.pluck(:email, :id)
     end
     f.actions
   end
