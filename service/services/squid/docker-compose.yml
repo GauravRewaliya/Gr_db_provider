@@ -1,0 +1,26 @@
+# version: '3.8'
+
+services:
+  squid:
+    image: sameersbn/squid:latest
+    container_name: squid
+    ports:
+      - "3128:3128" # Expose Squid on default port
+    volumes:
+      - squid_cache:/var/spool/squid # Persistent cache volume
+      - logs:/var/log/squid
+      - ./squid.conf:/etc/squid/squid.conf # Custom Squid configuration
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: "0.5" # Limit to half a CPU core
+        reservations:
+          memory: 1.5G
+          cpus: '1'
+    # restart: unless-stopped
+
+volumes:
+  squid_cache:
+  logs:
+

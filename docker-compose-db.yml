@@ -1,4 +1,4 @@
-version: '3.8'
+# version: '3.8'
 
 
 services:
@@ -14,6 +14,11 @@ services:
     volumes:
       - ./shared_db/postgres:/var/lib/postgresql/data
       - ./setup-scripts/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: "1.0"
     networks:
       - default
 
@@ -30,6 +35,11 @@ services:
     volumes:
       - ./shared_db/mysql:/var/lib/mysql
       - ./setup-scripts/mysql-init.sql:/docker-entrypoint-initdb.d/init.sql
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "1.0"
     networks:
       - default
   
@@ -81,3 +91,7 @@ services:
     #   - ./custom_app/adminer/html:/var/www/html
     networks:
       - default
+
+# environment:
+#   - HTTP_PROXY=http://<host-ip>:3128
+#   - HTTPS_PROXY=http://<host-ip>:3128

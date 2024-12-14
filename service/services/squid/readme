@@ -1,0 +1,13 @@
+docker compose up --build
+
+ 3045* docker network ls\n
+ 3046* docker network inspect d6
+
+
+curl -x http://172.21.0.1:3128 http://google.com
+
+
+docker exec -it squid tail -f /var/log/squid/access.log
+
+
+
