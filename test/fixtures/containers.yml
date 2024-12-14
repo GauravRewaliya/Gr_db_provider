@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  addon_json: 
+  usage_limit_json: 
+  container_id: MyString
+  open_ports: 
+  os_name: MyString
+  status: 1
+  last_used: 2024-12-14 15:15:19
+  storag_used: MyString
+
+two:
+  name: MyString
+  addon_json: 
+  usage_limit_json: 
+  container_id: MyString
+  open_ports: 
+  os_name: MyString
+  status: 1
+  last_used: 2024-12-14 15:15:19
+  storag_used: MyString

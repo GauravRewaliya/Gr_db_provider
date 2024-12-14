@@ -1,0 +1,62 @@
+<%= form_with(model: container) do |form| %>
+  <% if container.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(container.errors.count, "error") %> prohibited this container from being saved:</h2>
+
+      <ul>
+        <% container.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :addon_json, style: "display: block" %>
+    <%= form.text_field :addon_json %>
+  </div>
+
+  <div>
+    <%= form.label :usage_limit_json, style: "display: block" %>
+    <%= form.text_field :usage_limit_json %>
+  </div>
+
+  <div>
+    <%= form.label :container_id, style: "display: block" %>
+    <%= form.text_field :container_id %>
+  </div>
+
+  <div>
+    <%= form.label :open_ports, style: "display: block" %>
+    <%= form.text_field :open_ports %>
+  </div>
+
+  <div>
+    <%= form.label :os_name, style: "display: block" %>
+    <%= form.text_field :os_name %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div>
+    <%= form.label :last_used, style: "display: block" %>
+    <%= form.datetime_field :last_used %>
+  </div>
+
+  <div>
+    <%= form.label :storag_used, style: "display: block" %>
+    <%= form.text_field :storag_used %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
