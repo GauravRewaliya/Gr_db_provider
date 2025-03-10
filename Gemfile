@@ -61,7 +61,7 @@ gem "dotenv-rails", "~> 3.1"
 gem "devise", "~> 4.9"
 gem "hashid-rails", "~> 1.4"
 
-gem "activeadmin", "~> 3.2"
+gem "activeadmin", "~> 3.3"
 gem "sassc-rails", "~> 2.1"
 
 gem "docker-api", "~> 2.4"
